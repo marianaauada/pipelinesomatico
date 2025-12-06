@@ -22,7 +22,7 @@ Resolving deltas: 100% (106/106), done.
 
 ```bash
 %%bash
-# Cortar pelas colunas de 1 a 4 e criar um novo arquivo chamado df_WP848-cgi.txt
+# Cortar pelas colunas de 1 a 4 e criar um novo arquivo chamado df_WP048-cgi.txt
 # 1: CHROM (COnverte CHROM para CHR) formato que o CGI gosta
 # 2: POS
 # 3: REF
@@ -48,7 +48,7 @@ Após filtrar apenas as colunas de interesse (CHR, POS, REF e ALT), agora podemo
 > **Nota:** Altere a variável {SEU_TOKEN} para o Token do CGI criado para sua conta
 ```python
 import requests
-headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN'}
+headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN}'}
 payload = {'cancer_type': 'HEMATO', 'title': 'Somatic MF WP048', 'reference': 'hg38'}
 r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
                 headers=headers,
@@ -72,7 +72,7 @@ Verifique o ´Status` do seu job id para identificar se a analise terminou ou ho
 import requests
 job_id ="7d09666f743c78387299"
 
-headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN'}
+headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN}'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers)
 r.json()
 ```
@@ -97,7 +97,7 @@ Aqui podemos verificar o status em cada uma das etapas da análise do CGI
 import requests
 job_id ="7d09666f743c78387299"
 
-headers = {'Authorization': 'marianabelloauada@gmail.com be5873853bda53991f05'}
+headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN}'}
 payload={'action':'logs'}
 r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
 r.json()
@@ -210,7 +210,7 @@ Output:
 
 # WP019
 
-|index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
+|Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |0|input01\_1|1|16031913|G|A|chr1|16031913|snp|+|input01|CLCNKA|--|non-protein affecting|non-protein affecting|NaN|chr1:16031913 G\>A|intron\_variant|ENST00000331433|+|SNV|
 |1|input01\_2|1|149073703|C|T|chr1|149073703|snp|+|input01|NBPF9|--|non-protein affecting|non-protein affecting|NaN|chr1:149073703 C\>T|intron\_variant|ENST00000615421|+|SNV|
@@ -220,3 +220,16 @@ Output:
 |5|input01\_11|6|158130554|A|C|chr6|158130554|snp|+|input01|SERAC1|--|non-protein affecting|non-protein affecting|NaN|chr6:158130554 A\>C|intron\_variant|ENST00000647468|+|SNV|
 |6|input01\_13|7|111783014|G|A|chr7|111783014|snp|+|input01|DOCK4|--|non-protein affecting|non-protein affecting|NaN|chr7:111783014 G\>A|intron\_variant|ENST00000445943|+|SNV|
 |7|input01\_14|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
+
+
+# WP058
+
+|Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|input01\_1|12|57185563|T|G|chr12|57185563|snp|+|input01|LRP1|C2166G|NaN|NaN|NaN|chr12:57185563 T\>G|missense\_variant|ENST00000243077|+|SNV|
+|1|input01\_2|15|28272094|A|G|chr15|28272094|snp|+|input01|HERC2|--|non-protein affecting|non-protein affecting|NaN|chr15:28272094 A\>G|intron\_variant|ENST00000261609|+|SNV|
+|2|input01\_3|15|43206304|T|G|chr15|43206304|snp|+|input01|AC068724\.4|--|non-protein affecting|non-protein affecting|NaN|chr15:43206304 T\>G|intron\_variant|ENST00000563128|+|SNV|
+|3|input01\_4|19|12943751|GCAGAGGCTTAAGGAGGAGGAAGAAGACAAGAAACGCAAAGAGGAGGAGGAG|-|chr19|12943750|indel|+|input01|CALR|EQRLKEEEEDKKRKEEEE364-381X|NaN|NaN|NaN|chr19:12943751-12943751 GCAGAGGCTTAAGGAGGAGGAAGAAGACAAGAAACGCAAAGAGGAGGAGGAG\>-|frameshift\_variant|ENST00000316448|+|DEL|
+|4|input01\_5|2|105892889|T|G|chr2|105892889|snp|+|input01|NCK2|--|non-protein affecting|non-protein affecting|NaN|chr2:105892889 T\>G|intron\_variant|ENST00000233154|+|SNV|
+|5|input01\_6|20|32434638|-|G|chr20|32434638|indel|+|input01|ASXL1|-642-643X|NaN|NaN|NaN|chr20:32434638-32434639 -\>G|frameshift\_variant|ENST00000375687|+|INS|
+|6|input01\_7|7|124892275|T|C|chr7|124892275|snp|+|input01|POT1|K39E|NaN|NaN|NaN|chr7:124892275 T\>C|missense\_variant|ENST00000357628|+|SNV|
