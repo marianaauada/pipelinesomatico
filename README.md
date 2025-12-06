@@ -1,4 +1,4 @@
-# pipelinesomatico
+# Pipeline Somático
 Pipeline Somático - Do VCF (anotado) até o CGI Classificação
 
 **1. Clonar o git lmabrasil-hg38**
