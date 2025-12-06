@@ -140,7 +140,7 @@ Criar o diretório com 0 ID da amostra dentro de results
 mkdir -p results/WP048
 ```
 
-Fazer download do arquivo ´.zip´
+Fazer download do arquivo `.zip`
 
 ```python
 import requests
@@ -163,7 +163,8 @@ unzip /content/results/WP048/WP048-cgi.zip -d /content/results/WP048/
 ## Pronto!!
 
 Agora podemos visualizar a tabela `alterations.tsv`e descobrir quais alterações somáticas são `Drivers`, `Passengers` ou `Unclass`
-**Visualizar a tabela 'alterations.tsv'**
+
+**Visualizar a tabela `alterations.tsv`**
 
 Instalar a lib `pandas`
 
