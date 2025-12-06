@@ -18,7 +18,7 @@ Receiving objects: 100% (226/226), 8.63 MiB | 20.05 MiB/s, done.
 Resolving deltas: 100% (106/106), done.
 ```
 
-**Agora, vá até o gitbut lmabrasil-hg38 na sessão usando o CGI via API Reset no Google Colab**
+**Agora, vá até o github lmabrasil-hg38 na sessão usando o CGI via API Reset no Google Colab**
 
 ```bash
 %%bash
