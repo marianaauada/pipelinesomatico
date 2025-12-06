@@ -182,7 +182,7 @@ Output:
 |1|input01\_2|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
 
 
-**Link das demais amostras detalhadas**
+## **Link de acesso ao Colab com os passos a passos das demais amostras**
 > https://colab.research.google.com/drive/1OZMeFisty0miSQgQyr62b6YboNXIoQL-?usp=sharing
 
 # WP017
