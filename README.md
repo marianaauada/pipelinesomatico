@@ -132,7 +132,7 @@ Total de 4 arquivos de resultados:
 3. input01.tsv:
 4. summary.txt:
 
-Criar o diretório para resultados para cada amostra
+**Criar o diretório para resultados para cada amostra**
 
 ```bash
 %%bash
