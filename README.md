@@ -182,10 +182,14 @@ Output:
 |1|input01\_2|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
 
 
-## **Link de acesso ao Colab com os passos a passos das demais amostras**
+## **Notebook no Google Colab (com o passo a passo das demais amostras):**
 > https://colab.research.google.com/drive/1OZMeFisty0miSQgQyr62b6YboNXIoQL-?usp=sharing
 
-# WP017
+## **A seguir estão a tabela final e as tabelas de cada amostra separadamente**
+
+## Tabela final:
+
+## Tabela amostra WP017
 
 |Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -211,7 +215,7 @@ Output:
 |19|input01\_22|7|584561|G|A|chr7|584561|snp|+|input01|PRKAR1B|T239M|non-oncogenic|passenger \(oncodriveMUT\)|NaN|chr7:584561 G\>A|missense\_variant|ENST00000406797|+|SNV|
 
 
-# WP019
+## Tabela amostra WP019
 
 |Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -225,7 +229,7 @@ Output:
 |7|input01\_14|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
 
 
-# WP058
+## Tabela amostra WP058
 
 |Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -238,7 +242,7 @@ Output:
 |6|input01\_7|7|124892275|T|C|chr7|124892275|snp|+|input01|POT1|K39E|NaN|NaN|NaN|chr7:124892275 T\>C|missense\_variant|ENST00000357628|+|SNV|
 
 
-# WP068
+## Tabela amostra WP068
 
 |Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
