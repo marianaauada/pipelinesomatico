@@ -183,6 +183,30 @@ Output:
 
 
 # WP017
+```
+%%bash
+# Cortar pelas colunas de 1 a 4 e criar um novo arquivo chamado df_WP017-cgi.txt
+# 1: CHROM (Converte CHROM para CHR) formato que o CGI gosta
+# 2: POS
+# 3: REF
+# 4: ALT
+cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP017_hg19ToHg38.vep.filter.tsv | sed -e "s/CHROM/CHR/g"  > df_WP017-cgi.txt
+
+# Listar as 10 primeiras linhas
+head df_WP017-cgi.txt
+
+Output:
+CHR	POS	REF	ALT
+chr1	114716127	C	T
+chr1	152304661	G	C
+chr11	115209621	G	A
+chr12	132140028	C	T
+chr14	24119817	G	A
+chr14	59727407	G	A
+chr15	24675943	G	A
+chr16	67616834	G	A
+chr16	71389851	G	A
+```
 
 |index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
