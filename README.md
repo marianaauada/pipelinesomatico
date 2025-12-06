@@ -195,6 +195,7 @@ cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP017_hg19ToHg38.vep.filte
 # Listar as 10 primeiras linhas
 head df_WP017-cgi.txt
 
+-
 Output:
 CHR	POS	REF	ALT
 chr1	114716127	C	T
@@ -208,7 +209,108 @@ chr16	67616834	G	A
 chr16	71389851	G	A
 ```
 
-|index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
+```
+import requests
+headers = {'Authorization': 'marianabelloauada@gmail.com be5873853bda53991f05'}
+payload = {'cancer_type': 'HEMATO', 'title': 'Somatic MF WP017', 'reference': 'hg38'}
+r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
+                headers=headers,
+                files={
+                        'mutations': open('/content/df_WP017-cgi.txt', 'rb')
+                        },
+                data=payload)
+r.json()
+
+-
+Output:
+1234378652e9e0ff5cb5
+```
+
+```
+import requests
+job_id ="1234378652e9e0ff5cb5"
+
+headers = {'Authorization': 'marianabelloauada@gmail.com be5873853bda53991f05'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers)
+r.json()
+
+-
+Output:
+{'status': 'Done',
+ 'metadata': {'id': '1234378652e9e0ff5cb5',
+  'user': 'marianabelloauada@gmail.com',
+  'title': 'Somatic MF WP017',
+  'cancertype': 'HEMATO',
+  'reference': 'hg38',
+  'dataset': 'input.tsv',
+  'date': '2025-12-06 17:32:14'}}
+```
+
+```
+import requests
+job_id ="1234378652e9e0ff5cb5"
+
+headers = {'Authorization': 'marianabelloauada@gmail.com be5873853bda53991f05'}
+payload={'action':'logs'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+r.json()
+
+-
+Output:
+{'status': 'Done',
+ 'logs': ['# cgi analyze input.tsv -c HEMATO -g hg38',
+  '2025-12-06 18:32:18,882 INFO     Parsing input01.tsv\n',
+  '2025-12-06 18:32:18,892 WARNING  Skipping variant with invalid ref/alt: "C/T,A" | Alteration ID: input01_19\n',
+  '2025-12-06 18:32:18,892 WARNING  Skipping variant with invalid ref/alt: "-/,GTT,GTT" | Alteration ID: input01_21\n',
+  '2025-12-06 18:32:22,491 INFO     Running VEP\n',
+  '2025-12-06 18:32:25,123 INFO     Check cancer genes and consensus roles\n',
+  '2025-12-06 18:32:25,207 INFO     Annotate BoostDM mutations\n',
+  '2025-12-06 18:32:25,596 INFO     Annotate OncodriveMUT mutations\n',
+  '2025-12-06 18:32:32,510 INFO     Annotate validated oncogenic mutations\n',
+  '2025-12-06 18:32:32,652 INFO     Check oncogenic classification\n',
+  '2025-12-06 18:32:32,717 INFO     Matching biomarkers\n',
+  '2025-12-06 18:32:32,839 INFO     Prescription finished\n',
+  '2025-12-06 18:32:32,850 INFO     Aggregate metrics\n',
+  '2025-12-06 18:32:40,529 INFO     Compress output files\n',
+  '2025-12-06 18:32:40,706 INFO     Analysis done\n']}
+```
+
+```
+%%bash
+# Criar o diretório com o ID da amostra dentro de results
+mkdir -p results/WP017
+```
+
+```
+import requests
+job_id ="1234378652e9e0ff5cb5"
+
+headers = {'Authorization': 'marianabelloauada@gmail.com be5873853bda53991f05'}
+payload={'action':'download'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+with open('/content/results/WP017/WP017-cgi.zip', 'wb') as fd:
+    fd.write(r._content)
+```
+
+```
+%%bash
+unzip /content/results/WP017/WP017-cgi.zip -d /content/results/WP017/
+
+-
+Output:
+Archive:  /content/results/WP017/WP017-cgi.zip
+  inflating: /content/results/WP017/alterations.tsv  
+  inflating: /content/results/WP017/biomarkers.tsv  
+  inflating: /content/results/WP017/input01.tsv  
+  inflating: /content/results/WP017/summary.txt  
+```
+
+```
+import pandas as pd
+pd.read_csv('/content/results/WP017/alterations.tsv',sep='\t',index_col=False, engine= 'python')
+```
+
+|Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |0|input01\_1|1|114716127|C|T|chr1|114716127|snp|+|input01|NRAS|G12S|oncogenic \(predicted and annotated\)|driver \(boostDM: non-tissue-specific model\)|cgi,clinvar:177778|chr1:114716127 C\>T|missense\_variant|ENST00000369535|+|SNV|
 |1|input01\_2|1|152304661|G|C|chr1|152304661|snp|+|input01|FLG|R3409G|non-oncogenic|passenger \(oncodriveMUT\)|NaN|chr1:152304661 G\>C|missense\_variant|ENST00000368799|+|SNV|
