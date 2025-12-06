@@ -7,7 +7,7 @@ Aula Pipeline Somático - Do VCF (anotado) até o CGI Classificação
 ! git clone https://github.com/renatopuga/lmabrasil-hg38.git
 ```
 
-output
+Output
 ```
 Cloning into 'lmabrasil-hg38'...
 remote: Enumerating objects: 226, done.
@@ -33,7 +33,7 @@ cut -f1-4 /content/lmabrasil-hg38/vep_output/liftOver_WP048_hg19ToHg38.vep.filte
 head df_WP048-cgi.txt
 ```
 
-output
+Output
 ```
 CHR	POS	REF	ALT
 chr1	114716123	C	T
@@ -59,7 +59,7 @@ r = requests.post('https://www.cancergenomeinterpreter.org/api/v1',
 r.json()
 ```
 
-output Job ID:
+Output Job ID:
 ```
 7d09666f743c78387299
 ```
@@ -77,7 +77,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-output:
+Output:
 ```
 {'status': 'Done',
  'metadata': {'id': '7d09666f743c78387299',
@@ -103,7 +103,7 @@ r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, h
 r.json()
 ```
 
-output:
+Output:
 ```
 {'status': 'Done',
  'logs': ['# cgi analyze input.tsv -c HEMATO -g hg38',
@@ -176,9 +176,8 @@ import pandas as pd
 pd.read_csv('/content/results/WP048/alterations.tsv',sep='\t',index_col=False, engine= 'python')
 ```
 
-output:
-|   |  Input ID | CHROMOSOME |  POSITION | REF | ALT |  CHR |       POS | ALT_TYPE | STRAND | CGI-Sample ID | ... |                    CGI-Oncogenic Prediction | CGI-External oncogenic annotation |       CGI-Mutation |  CGI-Consequence |  CGI-Transcript | CGI-STRAND | CGI-Type |                                          CGI-HGVS |                   CGI-HGVSc |                     CGI-HGVSp |
-|--:|----------:|-----------:|----------:|----:|----:|-----:|----------:|---------:|-------:|--------------:|----:|--------------------------------------------:|----------------------------------:|-------------------:|-----------------:|----------------:|-----------:|---------:|--------------------------------------------------:|----------------------------:|------------------------------:|
-| 0 | input01_1 | 1          | 114716123 | C   | T   | chr1 | 114716123 | snp      | +      | input01       | ... | driver (boostDM: non-tissue-specific model) | cgi,oncokb,clinvar:13901          | chr1:114716123 C>T | missense_variant | ENST00000369535 | +          | SNV      | ENST00000369535:c.38G>A;p.(Gly13Asp);p.(G13D)     | ENST00000369535.5:c.38G>A   | ENSP00000358548.4:p.Gly13Asp  |
-| 1 | input01_2 | 9          | 5073770   | G   | T   | chr9 | 5073770   | snp      | +      | input01       | ... | passenger (oncodriveMUT)                    | cgi,oncokb,clinvar:14662          | chr9:5073770 G>T   | missense_variant | ENST00000381652 | +          | SNV      | ENST00000381652:c.1849G>T;p.(Val617Phe);p.(V617F) | ENST00000381652.4:c.1849G>T | ENSP00000371067.4:p.Val617Phe |
-|   |           |            |           |     |     |      |           |          |        |               |     |                                             |                                   |                    |                  |                 |            |          |                                                   |                             |                               |
+Output:
+|Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|input01\_1|1|114716123|C|T|chr1|114716123|snp|+|input01|NRAS|G13D|oncogenic \(predicted and annotated\)|driver \(boostDM: non-tissue-specific model\)|cgi,oncokb,clinvar:13901|chr1:114716123 C\>T|missense\_variant|ENST00000369535|+|SNV|
+|1|input01\_2|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
