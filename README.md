@@ -41,7 +41,7 @@ chr9	5073770	G	T
 ```
 
 **3. Enivar job para Cancer Genome Interpret (CGI) API**
-> https://www.google.com/url?q=https%3A%2F%2Fwww.cancergenomeinterpreter.org%2Frest_api
+> https://www.cancergenomeinterpreter.org%2Frest_api
 
 Após filtrar apenas as colunas de interesse (CHR, POS, REF e ALT), agora podemos enviar via EST_API as variantes somáticas da amostra WP048
 
@@ -66,7 +66,7 @@ Output Job ID:
 
 **4. Status do Job ID (Running, Error ou Done)**
 
-Verifique o Status` do seu job id para identificar se a analise terminou ou houve algum erro.
+Verifique o ´Status` do seu job id para identificar se a analise terminou ou houve algum erro.
 
 ```python
 import requests
