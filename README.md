@@ -206,3 +206,17 @@ Output:
 |17|input01\_18|21|43094667|T|G|chr21|43094667|snp|+|input01|U2AF1|Q157P|oncogenic \(predicted and annotated\)|driver \(boostDM: non-tissue-specific model\)|cgi,oncokb,clinvar:376024|chr21:43094667 T\>G|missense\_variant|ENST00000291552|+|SNV|
 |18|input01\_20|3|133380804|G|A|chr3|133380804|snp|+|input01|TMEM108|D365N|non-oncogenic|passenger \(oncodriveMUT\)|NaN|chr3:133380804 G\>A|missense\_variant|ENST00000321871|+|SNV|
 |19|input01\_22|7|584561|G|A|chr7|584561|snp|+|input01|PRKAR1B|T239M|non-oncogenic|passenger \(oncodriveMUT\)|NaN|chr7:584561 G\>A|missense\_variant|ENST00000406797|+|SNV|
+
+
+# WP019
+
+|index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|input01\_1|1|16031913|G|A|chr1|16031913|snp|+|input01|CLCNKA|--|non-protein affecting|non-protein affecting|NaN|chr1:16031913 G\>A|intron\_variant|ENST00000331433|+|SNV|
+|1|input01\_2|1|149073703|C|T|chr1|149073703|snp|+|input01|NBPF9|--|non-protein affecting|non-protein affecting|NaN|chr1:149073703 C\>T|intron\_variant|ENST00000615421|+|SNV|
+|2|input01\_3|17|76736877|G|T|chr17|76736877|snp|+|input01|SRSF2|P95H|oncogenic \(predicted and annotated\)|driver \(oncodriveMUT\)|cgi,oncokb|chr17:76736877 G\>T|missense\_variant|ENST00000392485|+|SNV|
+|3|input01\_6|2|113117932|G|T|chr2|113117932|snp|+|input01|IL1RN|--|non-protein affecting|non-protein affecting|NaN|chr2:113117932 G\>T|5\_prime\_UTR\_variant|ENST00000259206|+|SNV|
+|4|input01\_7|4|2341569|G|C|chr4|2341569|snp|+|input01|ZFYVE28|P76R|non-oncogenic|passenger \(oncodriveMUT\)|NaN|chr4:2341569 G\>C|missense\_variant|ENST00000290974|+|SNV|
+|5|input01\_11|6|158130554|A|C|chr6|158130554|snp|+|input01|SERAC1|--|non-protein affecting|non-protein affecting|NaN|chr6:158130554 A\>C|intron\_variant|ENST00000647468|+|SNV|
+|6|input01\_13|7|111783014|G|A|chr7|111783014|snp|+|input01|DOCK4|--|non-protein affecting|non-protein affecting|NaN|chr7:111783014 G\>A|intron\_variant|ENST00000445943|+|SNV|
+|7|input01\_14|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
