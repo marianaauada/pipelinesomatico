@@ -233,3 +233,11 @@ Output:
 |4|input01\_5|2|105892889|T|G|chr2|105892889|snp|+|input01|NCK2|--|non-protein affecting|non-protein affecting|NaN|chr2:105892889 T\>G|intron\_variant|ENST00000233154|+|SNV|
 |5|input01\_6|20|32434638|-|G|chr20|32434638|indel|+|input01|ASXL1|-642-643X|NaN|NaN|NaN|chr20:32434638-32434639 -\>G|frameshift\_variant|ENST00000375687|+|INS|
 |6|input01\_7|7|124892275|T|C|chr7|124892275|snp|+|input01|POT1|K39E|NaN|NaN|NaN|chr7:124892275 T\>C|missense\_variant|ENST00000357628|+|SNV|
+
+
+# WP068
+
+|Index|Input ID|CHROMOSOME|POSITION|REF|ALT|CHR|POS|ALT\_TYPE|STRAND|CGI-Sample ID|CGI-Gene|CGI-Protein Change|CGI-Oncogenic Summary|CGI-Oncogenic Prediction|CGI-External oncogenic annotation|CGI-Mutation|CGI-Consequence|CGI-Transcript|CGI-STRAND|CGI-Type|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|input01\_1|1|114716123|C|T|chr1|114716123|snp|+|input01|NRAS|G13D|oncogenic \(predicted and annotated\)|driver \(boostDM: non-tissue-specific model\)|cgi,oncokb,clinvar:13901|chr1:114716123 C\>T|missense\_variant|ENST00000369535|+|SNV|
+|1|input01\_2|9|5073770|G|T|chr9|5073770|snp|+|input01|JAK2|V617F|oncogenic \(annotated\)|passenger \(oncodriveMUT\)|cgi,oncokb,clinvar:14662|chr9:5073770 G\>T|missense\_variant|ENST00000381652|+|SNV|
