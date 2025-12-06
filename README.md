@@ -45,7 +45,7 @@ chr9	5073770	G	T
 
 Após filtrar apenas as colunas de interesse (CHR, POS, REF e ALT), agora podemos enviar via EST_API as variantes somáticas da amostra WP048
 
-> Nota: Altere a variável {SEU_TOKEN} para o Token do CGI criado para sua conta
+> **Nota:** Altere a variável {SEU_TOKEN} para o Token do CGI criado para sua conta
 ```python
 import requests
 headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN'}
@@ -78,7 +78,7 @@ r.json()
 ```
 
 output:
-´´´
+```
 {'status': 'Done',
  'metadata': {'id': '7d09666f743c78387299',
   'user': 'marianabelloauada@gmail.com',
@@ -87,14 +87,98 @@ output:
   'reference': 'hg38',
   'dataset': 'input.tsv',
   'date': '2025-12-06 14:05:22'}}
-  ´´´
-`
-**Log completo do Job**
+  ```
 
+**Log completo do Job**
 
 Aqui podemos verificar o status em cada uma das etapas da análise do CGI
 
-** Download dos Resultados**
+```python
+import requests
+job_id ="7d09666f743c78387299"
 
-Total de 4 arquivos de rssultados:
+headers = {'Authorization': 'marianabelloauada@gmail.com be5873853bda53991f05'}
+payload={'action':'logs'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+r.json()
+```
 
+output:
+```
+{'status': 'Done',
+ 'logs': ['# cgi analyze input.tsv -c HEMATO -g hg38',
+  '2025-12-06 15:05:25,296 INFO     Parsing input01.tsv\n',
+  '2025-12-06 15:05:29,309 INFO     Running VEP\n',
+  '2025-12-06 15:05:30,260 INFO     Check cancer genes and consensus roles\n',
+  '2025-12-06 15:05:30,344 INFO     Annotate BoostDM mutations\n',
+  '2025-12-06 15:05:30,379 INFO     Annotate OncodriveMUT mutations\n',
+  '2025-12-06 15:05:32,672 INFO     Annotate validated oncogenic mutations\n',
+  '2025-12-06 15:05:32,828 INFO     Check oncogenic classification\n',
+  '2025-12-06 15:05:32,894 INFO     Matching biomarkers\n',
+  '2025-12-06 15:05:32,987 INFO     Prescription finished\n',
+  '2025-12-06 15:05:32,999 INFO     Aggregate metrics\n',
+  '2025-12-06 15:05:35,659 INFO     Compress output files\n',
+  '2025-12-06 15:05:35,685 INFO     Analysis done\n']}
+```
+
+
+**Download dos Resultados**
+
+Total de 4 arquivos de resultados:
+> A definição de cada arquivo pelo CGI (ver no site)
+
+1. alterations.tsv:
+2. biomarker.tsv:
+3. input01.tsv:
+4. summary.txt:
+
+Criar o diretório para resultados para cada amostra
+
+```bash
+%%bash
+Criar o diretório com 0 ID da amostra dentro de results
+mkdir -p results/WP048
+```
+
+Fazer download do arquivo ´.zip´
+
+```python
+import requests
+job_id ="7d09666f743c78387299"
+
+headers = {'Authorization': 'marianabelloauada@gmail.com {SEU_TOKEN}'}
+payload={'action':'download'}
+r = requests.get('https://www.cancergenomeinterpreter.org/api/v1/%s' % job_id, headers=headers, params=payload)
+with open('/content/results/WP048/WP048-cgi.zip', 'wb') as fd:
+    fd.write(r._content)
+``` 
+
+Descompactar o arquivo '.zip' no diretório de resultados da amostra
+
+```bash
+%%bash
+unzip /content/results/WP048/WP048-cgi.zip -d /content/results/WP048/
+```
+
+## Pronto!!
+
+Agora podemos visualizar a tabela `alterations.tsv`e descobrir quais alterações somáticas são `Drivers`, `Passengers` ou `Unclass`
+**Visualizar a tabela 'alterations.tsv'**
+
+Instalar a lib `pandas`
+
+```bash
+! pip install pandas
+```
+
+```python
+import pandas as pd
+pd.read_csv('/content/results/WP048/alterations.tsv',sep='\t',index_col=False, engine= 'python')
+```
+
+output:
+|   |  Input ID | CHROMOSOME |  POSITION | REF | ALT |  CHR |       POS | ALT_TYPE | STRAND | CGI-Sample ID | ... |                    CGI-Oncogenic Prediction | CGI-External oncogenic annotation |       CGI-Mutation |  CGI-Consequence |  CGI-Transcript | CGI-STRAND | CGI-Type |                                          CGI-HGVS |                   CGI-HGVSc |                     CGI-HGVSp |
+|--:|----------:|-----------:|----------:|----:|----:|-----:|----------:|---------:|-------:|--------------:|----:|--------------------------------------------:|----------------------------------:|-------------------:|-----------------:|----------------:|-----------:|---------:|--------------------------------------------------:|----------------------------:|------------------------------:|
+| 0 | input01_1 | 1          | 114716123 | C   | T   | chr1 | 114716123 | snp      | +      | input01       | ... | driver (boostDM: non-tissue-specific model) | cgi,oncokb,clinvar:13901          | chr1:114716123 C>T | missense_variant | ENST00000369535 | +          | SNV      | ENST00000369535:c.38G>A;p.(Gly13Asp);p.(G13D)     | ENST00000369535.5:c.38G>A   | ENSP00000358548.4:p.Gly13Asp  |
+| 1 | input01_2 | 9          | 5073770   | G   | T   | chr9 | 5073770   | snp      | +      | input01       | ... | passenger (oncodriveMUT)                    | cgi,oncokb,clinvar:14662          | chr9:5073770 G>T   | missense_variant | ENST00000381652 | +          | SNV      | ENST00000381652:c.1849G>T;p.(Val617Phe);p.(V617F) | ENST00000381652.4:c.1849G>T | ENSP00000371067.4:p.Val617Phe |
+|   |           |            |           |     |     |      |           |          |        |               |     |                                             |                                   |                    |                  |                 |            |          |                                                   |                             |                               |
