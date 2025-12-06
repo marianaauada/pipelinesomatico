@@ -18,7 +18,7 @@ Receiving objects: 100% (226/226), 8.63 MiB | 20.05 MiB/s, done.
 Resolving deltas: 100% (106/106), done.
 ```
 
-**Agora, vá até o github lmabrasil-hg38 na sessão usando o CGI via API Reset no Google Colab**
+**2. Agora, vá até o github lmabrasil-hg38 na sessão usando o CGI via API Reset no Google Colab**
 
 ```bash
 %%bash
@@ -40,7 +40,7 @@ chr1	114716123	C	T
 chr9	5073770	G	T
 ```
 
-**Enivar job para Cancer Genome Interpret (CGI) API**
+**3. Enivar job para Cancer Genome Interpret (CGI) API**
 > https://www.google.com/url?q=https%3A%2F%2Fwww.cancergenomeinterpreter.org%2Frest_api
 
 Após filtrar apenas as colunas de interesse (CHR, POS, REF e ALT), agora podemos enviar via EST_API as variantes somáticas da amostra WP048
@@ -64,7 +64,7 @@ Output Job ID:
 7d09666f743c78387299
 ```
 
-**Status do Job ID (Running, Error ou Done)**
+**4. Status do Job ID (Running, Error ou Done)**
 
 Verifique o Status` do seu job id para identificar se a analise terminou ou houve algum erro.
 
@@ -89,7 +89,7 @@ Output:
   'date': '2025-12-06 14:05:22'}}
   ```
 
-**Log completo do Job**
+**5. Log completo do Job**
 
 Aqui podemos verificar o status em cada uma das etapas da análise do CGI
 
@@ -122,7 +122,7 @@ Output:
 ```
 
 
-**Download dos Resultados**
+**6. Download dos Resultados**
 
 Total de 4 arquivos de resultados:
 > A definição de cada arquivo pelo CGI (ver no site)
@@ -132,7 +132,7 @@ Total de 4 arquivos de resultados:
 3. input01.tsv:
 4. summary.txt:
 
-**Criar o diretório para resultados para cada amostra**
+**7. Criar o diretório para resultados para cada amostra**
 
 ```bash
 %%bash
@@ -140,7 +140,7 @@ Criar o diretório com 0 ID da amostra dentro de results
 mkdir -p results/WP048
 ```
 
-**Fazer download do arquivo `.zip`**
+**8. Fazer download do arquivo `.zip`**
 
 ```python
 import requests
@@ -153,14 +153,14 @@ with open('/content/results/WP048/WP048-cgi.zip', 'wb') as fd:
     fd.write(r._content)
 ``` 
 
-**Descompactar o arquivo '.zip' no diretório de resultados da amostra**
+**9. Descompactar o arquivo '.zip' no diretório de resultados da amostra**
 
 ```bash
 %%bash
 unzip /content/results/WP048/WP048-cgi.zip -d /content/results/WP048/
 ```
 
-**Agora podemos visualizar a tabela `alterations.tsv`e descobrir quais alterações somáticas são `Drivers`, `Passengers` ou `Unclass**
+**10. Agora podemos visualizar a tabela `alterations.tsv`e descobrir quais alterações somáticas são `Drivers`, `Passengers` ou `Unclass**
 
 **Visualizar a tabela `alterations.tsv`**
 
