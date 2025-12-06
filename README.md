@@ -160,7 +160,7 @@ with open('/content/results/WP048/WP048-cgi.zip', 'wb') as fd:
 unzip /content/results/WP048/WP048-cgi.zip -d /content/results/WP048/
 ```
 
-* # Agora podemos visualizar a tabela `alterations.tsv`e descobrir quais alterações somáticas são `Drivers`, `Passengers` ou `Unclass`*
+**Agora podemos visualizar a tabela `alterations.tsv`e descobrir quais alterações somáticas são `Drivers`, `Passengers` ou `Unclass**
 
 **Visualizar a tabela `alterations.tsv`**
 
