@@ -125,7 +125,7 @@ Output:
 **6. Download dos Resultados**
 
 Total de 4 arquivos de resultados:
-> A definição de cada arquivo pelo CGI (ver no site)
+> A definição de cada arquivo pelo CGI
 
 1. alterations.tsv: são as alterações genéticas identificadas na amostra tumoral, como mutações e outras variações no DNA, que recebem anotações funcionais e clínicas pelo CGI
 2. biomarker.tsv: é um banco de dados que integra biomarcadores genômicos relacionados à sensibilidade, resistência e toxicidade de medicamentos em tumores
