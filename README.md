@@ -127,10 +127,10 @@ Output:
 Total de 4 arquivos de resultados:
 > A definição de cada arquivo pelo CGI (ver no site)
 
-1. alterations.tsv:
-2. biomarker.tsv:
-3. input01.tsv:
-4. summary.txt:
+1. alterations.tsv: são as alterações genéticas identificadas na amostra tumoral, como mutações e outras variações no DNA, que recebem anotações funcionais e clínicas pelo CGI
+2. biomarker.tsv: é um banco de dados que integra biomarcadores genômicos relacionados à sensibilidade, resistência e toxicidade de medicamentos em tumores
+3. input01.tsv: é uma lista de alterações genéticas detectadas em uma ou mais amostras tumorais
+4. summary.txt: se refere a um relatório consolidado que apresenta uma visão geral dos dados analisados, incluindo as principais alterações genéticas e os biomarcadores relacionados ao tumor
 
 **7. Criar o diretório para resultados para cada amostra**
 
